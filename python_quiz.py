@@ -12,21 +12,6 @@ print('''        __________
  /___________\\/_____//_____/ /_____________________________/   
                                                                ''')
 
-# def start_quiz():
-#     #welome user with breif instructions and a start command
-
-# def get_hint():
-#     #display a hint associated with list item in questions.py
-
-# def get_user_guess():
-#     #get user input to compare with 'answer' key value in questions.py
-
-# def user_guess_result()
-#     #choose whether to display 'Correct Answer' or 'Wrong Answer' message
-
-# def show_example():
-#     #display 'example' key value from questions.py if user_guess is correct
-
 def get_help():
     print("Help goes here")
 #     #display a set of commands if user is stuck i.e. 'quit', 'skip' etc. until UI is made
@@ -71,11 +56,14 @@ def play_game():
     while user_guess != str(questions[key]['answer']):
         # user_guess = input("Your guess:\n")
         if user_guess == "hint":
-            print("\n---HINT---\n\n" + questions[key]['hint'] + "\n")
+            print("\n--------------HINT--------------\n\n" + questions[key]['hint'] + "\n\n~~~Enter QTM to quit to menu~~~\n")
             play_game()
+        elif user_guess == "QTM":
+            return start_quiz()
         else:
             print("\nNot quite! Try again. ***Don't forget to add punctuation like function() or .function***\n")
             play_game()
+
 
     
 start_quiz()
