@@ -11,21 +11,25 @@ print('''        __________
   /  /____\\ /  / /_/ /__/ /_  /  /__________________________   
  /___________\\/_____//_____/ /_____________________________/   
                                                                ''')
+print("Welcome to Quiznake, enter one of the following commands:\n")
+print('''-start
+-help
+-quit\n''')
+
 
 def get_help():
-    print("Help goes here")
-#     #display a set of commands if user is stuck i.e. 'quit', 'skip' etc. until UI is made
+    print('''          ------------------HELP------------------
+Everything is case sensitive, so if you're feeling stuck think about how you would write in Python.
 
-def exit_game():
-    print("Exit strategy goes here")
+Commands:
+          -help: List of commands (You're here now.)
+          -hint: Get a question specific hint.
+          -skip: Generate a new question for now.
+          -QTM: Quit To Menu\n''')
 
 key = ""
 
 def start_quiz():
-    print("Welcome to Quiznake, enter one of the following commands:\n")
-    print('''-start
--help
--quit\n''')
     user_input = input()
     if user_input == "start":
         print("\n")
@@ -34,11 +38,11 @@ def start_quiz():
     elif user_input == "help":
         print("\n")
         get_help()
+        start_quiz()
     elif user_input == "quit":
-        print("\n")
-        return exit_game()
-    while user_input != "start" or "help" or "quit":
-        user_input = input("\nEnter command:\n\n")
+        exit()
+    # while user_input != "start" or user_input != "help":
+    #     user_input = input("\nEnter command:\n\n")
 
 def get_question():
     global key
@@ -54,16 +58,26 @@ def play_game():
         print("\nThat's right! It would look something like this:\n\n" + questions[key]['example'] + "\n\n---NEXT QUESTION---\n")
         get_question()
     while user_guess != str(questions[key]['answer']):
-        # user_guess = input("Your guess:\n")
         if user_guess == "hint":
             print("\n--------------HINT--------------\n\n" + questions[key]['hint'] + "\n\n~~~Enter QTM to quit to menu~~~\n")
             play_game()
+        elif user_guess == "help":
+            get_help()
+            play_game()
         elif user_guess == "QTM":
-            return start_quiz()
+            print('''\n-start
+-help
+-quit\n''')
+            start_quiz()
+        elif user_guess == "skip":
+            print("\n")
+            get_question()
+            play_game()
+
         else:
             print("\nNot quite! Try again. ***Don't forget to add punctuation like function() or .function***\n")
             play_game()
 
 
-    
+
 start_quiz()
