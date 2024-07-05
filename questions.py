@@ -11,15 +11,15 @@
 
 questions = {
     'print' : {
-        'question' : 'What command would you use to display something to the user?',
+        'question' : 'What command would you use to display text to the user?',
         'answer' : 'print()',
-        'hint' : "This is one of the first ones you learned. Think of the output as a message you're writing to a friend.",
-        'example' : 'Input: print("Hello Squirrel")\nOutput:>>>"Hello Squirrel"',
+        'hint' : '''The name of the function is very literal, if you wanted to display text on paper you would also ____ it.''',
+        'example' : 'Input: print("Hello Squirrel")\nOutput:>>>Hello Squirrel',
     },
-    '' : {
-        'question' : '',
-        'answer' : '',
-        'hint' : '',
-        'example' : '',
-    }
+    # '' : {
+    #     'question' : '',
+    #     'answer' : '',
+    #     'hint' : '',
+    #     'example' : '',
+    # }
 }
