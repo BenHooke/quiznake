@@ -1,4 +1,4 @@
-from questions import questions
+from questions import questions, completed_keys
 import random
 
 
@@ -41,14 +41,17 @@ def start_quiz():
         start_quiz()
     elif user_input == "quit":
         exit()
-    # while user_input != "start" or user_input != "help":
-    #     user_input = input("\nEnter command:\n\n")
 
 def get_question():
     global key
     key = random.choice(list(questions))
-    print(questions[key]['question'] + "\n")
-    play_game()
+    if key in completed_keys and len(completed_keys) != len(questions):
+        get_question()
+    elif len(completed_keys) == len(questions):
+        game_over()
+    else:
+        print(questions[key]['question'] + "\n")
+        play_game()
 
 def play_game():
     global key
@@ -56,6 +59,7 @@ def play_game():
     
     if user_guess == questions[key]['answer']:
         print("\nThat's right! It would look something like this:\n\n" + questions[key]['example'] + "\n\n---NEXT QUESTION---\n")
+        completed_keys.append(key)
         get_question()
     while user_guess != str(questions[key]['answer']):
         if user_guess == "hint":
@@ -65,18 +69,21 @@ def play_game():
             get_help()
             play_game()
         elif user_guess == "QTM":
-            print('''\n-start
--help
--quit\n''')
+            print('\n-start\n-help\n-quit\n')
             start_quiz()
         elif user_guess == "skip":
             print("\n")
             get_question()
             play_game()
-
         else:
             print("\nNot quite! Try again. ***Don't forget to add punctuation like function() or .function***\n")
             play_game()
+
+def game_over():
+    print("Actually...\n\nThat's all of them for now! Great job!\n\n")
+    start_quiz()
+    completed_keys.clear()
+    #Still looking for a way to start the quiz over again from this point, but it seems to be reading completed_keys as full still.
 
 
 
