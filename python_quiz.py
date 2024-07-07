@@ -58,7 +58,7 @@ def play_game():
     user_guess = input("Your guess: ")
     
     if user_guess == questions[key]['answer']:
-        print("\nThat's right! It would look something like this:\n\n" + questions[key]['example'] + "\n\n---NEXT QUESTION---\n")
+        print("\nThat's right! It would look something like this:\n\n" + questions[key]['example'] + "\n\n\n\n\n\n---NEXT QUESTION---\n")
         completed_keys.append(key)
         get_question()
     while user_guess != str(questions[key]['answer']):
@@ -76,7 +76,7 @@ def play_game():
             get_question()
             play_game()
         else:
-            print("\nNot quite! Try again. ***Don't forget to add punctuation like function() or .function***\n")
+            print("\nNot quite! Try again. ***Don't forget to add punctuation like function() or .function()***\n")
             play_game()
 
 def game_over():

@@ -1,5 +1,2 @@
-from questions import questions, completed_keys
+# Just using this to test functions while writing questions to make sure I know how they work.
 
-print(len(questions))
-
-print(len(completed_keys))
