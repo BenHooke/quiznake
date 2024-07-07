@@ -1,6 +1,8 @@
 # quiznake
 Thanks for checking out my program!
 
+To start the quiz: Run python_quiz.py and play the game in your terminal, nothing fancy just yet.
+
 DISCLAIMER: I am not an educator by any means, nor am I a programmer. I started learning to code about a month and a half ago, as of July 7th, 2024.
 I wanted to make this quiz program as a way to help myself learn.
 
